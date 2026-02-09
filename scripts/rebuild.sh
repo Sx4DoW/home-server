@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
-# Path to your config
-CONFIG_DIR="$HOME/home-server"
+set -e
 
 echo "--- Pulling latest changes from GitHub ---"
 cd "$CONFIG_DIR" && git pull origin main

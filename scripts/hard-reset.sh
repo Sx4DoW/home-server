@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-CONFIG_DIR="$HOME/nixos-config"
-
 echo "CRITICAL: This will wipe all generations and reset to Generation 1."
 read -p "Continue? (y/N) " -n 1 -r
 echo

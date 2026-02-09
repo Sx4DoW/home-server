@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+
+  environment.variables = {
+    CONFIG_DIR = "$HOME/home-server";
+  }
+
   environment.systemPackages = with pkgs; [
     nim
     neovim
@@ -14,9 +19,9 @@
 
   environment.shellAliases = {
     # System Operations
-    nixos-rebuild    = "bash ~/nixos-config/scripts/rebuild.sh";
-    nixos-reset      = "bash ~/nixos-config/scripts/hard-reset.sh";
-    nixos-edit       = "nano ~/nixos-config/config/configuration.nix";
+    nixos-rebuild    = "bash $CONFIG_DIR/scripts/rebuild.sh";
+    nixos-reset      = "bash $CONFIG_DIR/scripts/hard-reset.sh";
+    nixos-edit       = "nano $CONFIG_DIR/config/configuration.nix";
     nixos-clean      = "sudo nix-collect-garbage -d";
 
     # Generation Management
