@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Path to your config
-CONFIG_DIR="$HOME/nixos-config"
+CONFIG_DIR="$HOME/home-server"
 
 echo "--- Pulling latest changes from GitHub ---"
 cd "$CONFIG_DIR" && git pull origin main
