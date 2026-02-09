@@ -16,6 +16,7 @@
     htop
     pciutils
     tmux
+    docker-compose
   ];
 
   environment.shellAliases = {
@@ -33,5 +34,9 @@
     nixos-pin        = "sudo ln -sf /nix/var/nix/profiles/system-$(readlink /nix/var/nix/profiles/system | cut -d- -f2)-link /nix/var/nix/gcroots/pinned-manual-$(date +%F-%H%M)";
     nixos-ls-pinned  = "ls -l /nix/var/nix/gcroots/pinned-* 2>/dev/null | awk '{print $9 \" -> \" $11}'";
     nixos-unpin      = "sudo find /nix/var/nix/gcroots/ -name 'pinned-manual-*' | grep -i";
+
+    # Docker
+    dps  = "docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'";
+    dlog = "docker logs -f";
   };
 }
