@@ -40,6 +40,6 @@
     dlog = "docker logs -f";
 
     # Git sync
-    void-sync = "cd ~/home-server && git pull && cd docker && git pull origin main && cd ..";
+    void-sync = "cd ~/home-server && git pull && git submodule update --remote --merge && cd docker && git checkout main && git pull && cd ..";
   };
 }
