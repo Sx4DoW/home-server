@@ -40,6 +40,5 @@
     dlog = "docker logs -f";
 
     # Git sync
-    void-sync = "cd ~/home-server && git pull --recurse-submodules && git submodule update --remote --recursive";
-  };
+    void-sync = "cd ~/home-server && git pull --recurse-submodules && git submodule update --remote --recursive --force";  };
 }
