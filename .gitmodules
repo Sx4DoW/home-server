@@ -1,0 +1,3 @@
+[submodule "docker"]
+	path = docker
+	url = https://github.com/Sx4DoW/home-server-containers.git
