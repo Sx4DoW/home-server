@@ -4,7 +4,7 @@
 
   environment.variables = {
     CONFIG_DIR = "$HOME/home-server";
-  }
+  };
 
   environment.systemPackages = with pkgs; [
     nim
