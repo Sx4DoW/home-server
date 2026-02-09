@@ -38,5 +38,8 @@
     # Docker
     dps  = "docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'";
     dlog = "docker logs -f";
+
+    # Git sync
+    void-sync = "cd ~/home-server && git pull --recurse-submodules && git submodule update --remote --recursive";
   };
 }
