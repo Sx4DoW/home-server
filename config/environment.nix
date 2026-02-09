@@ -15,6 +15,7 @@
     git
     htop
     pciutils
+    tmux
   ];
 
   environment.shellAliases = {
