@@ -20,16 +20,16 @@ This setup transforms a standard NixOS installation into a **version-controlled 
 
 ### Directory Structure
 
-```
+```md
 home-server/
-├── config/              # NixOS configuration modules
+├── config/                 # NixOS configuration modules
 │   ├── configuration.nix       # Main system configuration
 │   ├── environment.nix         # Packages, aliases, and environment variables
 │   ├── ssh.nix                 # SSH daemon and authorized keys
 │   ├── tailscale.nix           # Tailscale VPN configuration
 │   ├── fastfetch.nix           # Custom system info display
 │   └── hardware-configuration.nix
-└── scripts/             # Automation scripts
+└── scripts/                # Automation scripts
     ├── rebuild.sh              # Pull from Git and rebuild system
     └── hard-reset.sh           # Wipe generations and reset to Gen 1
 ```
@@ -43,7 +43,7 @@ Custom aliases are defined in [environment.nix](config/environment.nix) to simpl
 ### System Operations
 
 | Command | Function |
-|---------|----------|
+| --- | --- |
 | `nixos-rebuild` | Pull latest changes from GitHub and rebuild the system |
 | `nixos-reset` | Wipe all generations, clean garbage, and reset to Generation 1 |
 | `nixos-edit` | Open the main configuration file in nano |
@@ -52,14 +52,14 @@ Custom aliases are defined in [environment.nix](config/environment.nix) to simpl
 ### Generation Management
 
 | Command | Function |
-|---------|----------|
+| --- | --- |
 | `nixos-ls-gens` | List all previous system versions (generations) |
 | `nixos-go-gen1` | Roll back to Generation 1 and activate it |
 
 ### Pinning and Maintenance
 
 | Command | Function |
-|---------|----------|
+| --- | --- |
 | `nixos-pin` | Mark the current generation as "pinned" to prevent deletion |
 | `nixos-ls-pinned` | List all pinned generations |
 | `nixos-unpin` | Search for pinned generations (use with `xargs rm` to unpin) |
@@ -79,6 +79,7 @@ Custom aliases are defined in [environment.nix](config/environment.nix) to simpl
 ### Hardware Acceleration
 
 Intel QuickSync support enabled for hardware video encoding/decoding:
+
 ```nix
 hardware.graphics = {
   enable = true;
@@ -89,26 +90,31 @@ hardware.graphics = {
 ### Networking & Remote Access
 
 **SSH Configuration** ([ssh.nix](config/ssh.nix)):
+
 - Password authentication disabled
 - Keyboard-interactive authentication disabled
 - Root login disabled
 - Three authorized keys (laptop, desktop, phone)
 
 **Tailscale VPN** ([tailscale.nix](config/tailscale.nix)):
+
 - Tailscale daemon enabled
 - MagicDNS and exit nodes configured
 - UDP port opened in firewall
 - Reverse path filtering set to "loose"
 
 **Wake-on-LAN:**
+
 - Enabled on interface `enp0s25`
 
 **Power Management:**
+
 - Sleep, suspend, hibernate, and hybrid-sleep all disabled to keep the server always-on
 
 ### Installed Packages
 
 System packages defined in [environment.nix](config/environment.nix):
+
 - **Editors:** `neovim`, `nano`
 - **Development:** `nim`, `git`
 - **Utilities:** `wget`, `htop`, `pciutils`, `ncurses`
@@ -118,6 +124,7 @@ System packages defined in [environment.nix](config/environment.nix):
 ### Docker Support
 
 Docker is enabled with the `void` user added to the `docker` group for container management:
+
 ```nix
 virtualisation.docker.enable = true;
 users.users.void.extraGroups = [ "wheel" "docker" "video" "render" ];
@@ -126,6 +133,7 @@ users.users.void.extraGroups = [ "wheel" "docker" "video" "render" ];
 ### Automatic Maintenance
 
 **Nix Store Optimization:**
+
 - Auto-optimize store enabled to deduplicate files
 - Automatic garbage collection runs weekly
 - Automatically deletes generations older than 7 days
@@ -142,6 +150,7 @@ nix.gc = {
 ### Custom System Info Display
 
 Fastfetch is configured to display on login ([fastfetch.nix](config/fastfetch.nix)) showing:
+
 - OS and uptime
 - Local IP and Tailscale IP
 - Current generation number and pinned generation count
@@ -162,6 +171,7 @@ The global variable `$CONFIG_DIR` is set to `$HOME/home-server` in [environment.
 ### rebuild.sh
 
 Pulls the latest configuration from GitHub and applies it:
+
 1. Pulls from `origin/main`
 2. Runs `sudo nixos-rebuild switch`
 3. Displays system status with `fastfetch`
@@ -170,9 +180,10 @@ Uses `set -e` to exit immediately on any error.
 
 ### hard-reset.sh
 
-**WARNING: Destructive operation**
+## WARNING: Destructive operation
 
 This script:
+
 1. Prompts for confirmation (y/N)
 2. Removes all generation links
 3. Runs full garbage collection (`nix-collect-garbage -d`)
@@ -209,11 +220,13 @@ Use this to recover from a broken system state or to start fresh.
 ### Rolling Back
 
 If a change breaks the system:
+
 ```bash
 sudo nixos-rebuild switch --rollback
 ```
 
 Or switch to a specific generation:
+
 ```bash
 nixos-ls-gens                # Find the generation number
 sudo nix-env --profile /nix/var/nix/profiles/system --switch-generation <number>
@@ -223,6 +236,7 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
 ### Monitoring System State
 
 Check the current state at any time:
+
 ```bash
 fastfetch                # See generation, IPs, Docker status, etc.
 nixos-ls-gens            # View generation history
@@ -234,12 +248,14 @@ nixos-ls-pinned          # Check protected generations
 ## Initial Setup
 
 This configuration assumes:
+
 - NixOS 24.11 or later
 - The repository is cloned to `~/home-server`
 - A read-only GitHub deploy key is configured
 - SSH keys are added to [ssh.nix](config/ssh.nix)
 
 To apply this configuration on a fresh NixOS install:
+
 ```bash
 cd ~/home-server
 sudo nixos-rebuild switch -I nixos-config="$HOME/home-server/config/configuration.nix"
