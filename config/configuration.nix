@@ -8,6 +8,9 @@
       ./ssh.nix
       ./tailscale.nix
       ./fastfetch.nix
+      ./docker.nix
+      ./tmux.nix
+      ./firewall.nix
     ];
 
   # ----------------------------------------------------
@@ -19,6 +22,9 @@
 
   # SSD Health
   services.fstrim.enable = true;
+
+  # Enabling ZRAM
+  zramSwap.enable = true;
 
   # Hardware Acceleration (NUC QuickSync)
   hardware.graphics = {
@@ -58,8 +64,7 @@
 
   # ----------------------------------------------------
 
-  # Docker & Lean Maintenance
-  virtualisation.docker.enable = true;
+  # Garbage Collection
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
@@ -69,7 +74,9 @@
 
   # ----------------------------------------------------
 
+  # System Settings  
   system.stateVersion = "24.11";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # ----------------------------------------------------
 
