@@ -14,6 +14,7 @@ Complete reference for home-server setup.
 ## 🚀 Getting Started
 
 **New to this setup?**
+
 1. Read [QUICKSTART.md](QUICKSTART.md) - 5 min overview
 2. Check [ARCHITECTURE.md](ARCHITECTURE.md) - Understand the system
 3. Bookmark [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - For when things break
@@ -45,17 +46,20 @@ Complete reference for home-server setup.
 ## 🎯 Common Tasks
 
 ### Download Music
+
 1. Open [Slskd](http://100.68.33.95:5030)
 2. Search artist/song
 3. Download FLAC or 320kbps
 4. Rescan Jellyfin
 
 ### Add Movies/TV
+
 1. Copy to `/srv/jellyfin/media/Movies` or `/srv/jellyfin/media/TV Shows`
 2. Follow naming: `Movie Name (Year)/Movie Name (Year).mkv`
 3. Rescan Jellyfin library
 
 ### Update Configuration
+
 ```bash
 # On archlinux
 cd ~/home-server
@@ -67,6 +71,7 @@ void-sync && nixos-rebuild
 ```
 
 ### Fix Permissions
+
 ```bash
 sudo chown -R 1000:1000 /srv/jellyfin
 sudo chown -R 1000:1000 ~/home-server/docker/<service>/config
@@ -94,16 +99,18 @@ htop                  # Resource usage
 ## 🌐 Service URLs
 
 All via Tailscale (100.68.33.95):
-- Homepage: http://100.68.33.95:3000
-- Jellyfin: http://100.68.33.95:8096  
-- Slskd: http://100.68.33.95:5030
+
+- Homepage: <http://100.68.33.95:3000>
+- Jellyfin: <http://100.68.33.95:8096>  
+- Slskd: <http://100.68.33.95:5030>
 
 ## 📱 Mobile Access
 
 **Jellyfin Apps:**
+
 - Android: "Jellyfin for Android"
 - iOS: "Jellyfin Mobile"
-- Server: http://100.68.33.95:8096
+- Server: <http://100.68.33.95:8096>
 
 ## 🗂️ Directory Structure
 
@@ -136,6 +143,7 @@ All via Tailscale (100.68.33.95):
 ## 🆘 Emergency
 
 **Service broken?**
+
 ```bash
 cd ~/home-server/docker/<service>
 docker-compose down
@@ -144,6 +152,7 @@ docker-compose up -d
 ```
 
 **System broken?**
+
 ```bash
 nixos-ls-gens        # List generations
 nixos-go-gen1        # Rollback
@@ -151,8 +160,9 @@ nixos-go-gen1        # Rollback
 ```
 
 **Can't access?**
+
 - Check Tailscale: `tailscale status`
-- Use IP: http://100.68.33.95:PORT
+- Use IP: <http://100.68.33.95:PORT>
 - Try incognito browser
 
 ## 📚 Need More Help?
