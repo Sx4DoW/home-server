@@ -2,3 +2,7 @@ result
 *.swp
 .direnv/
 .gitmodules
+
+# Environment variables
+.env
+**/.env
