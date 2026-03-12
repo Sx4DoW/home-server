@@ -1,4 +1,4 @@
 [submodule "docker"]
 	path = docker
-	url = git@github-containers:Sx4DoW/home-server-containers.git
+	url = git@github.com:Sx4DoW/home-server-containers.git
 	branch = main
