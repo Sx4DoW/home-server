@@ -4,12 +4,12 @@ Complete reference for home-server setup.
 
 ## 📋 Quick Links
 
-| Document | Purpose |
-|----------|---------|
-| [QUICKSTART.md](QUICKSTART.md) | **Start here** - Common tasks & quick reference |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | System design & workflow |
-| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Common issues & solutions |
-| [README.md](README.md) | Full project documentation |
+| Document                                 | Purpose                                         |
+|------------------------------------------|-------------------------------------------------|
+| [QUICKSTART.md](QUICKSTART.md)           | **Start here** - Common tasks & quick reference |
+| [ARCHITECTURE.md](ARCHITECTURE.md)       | System design & workflow                        |
+| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Common issues & solutions                       |
+| [README.md](README.md)                   | Full project documentation                      |
 
 ## 🚀 Getting Started
 
@@ -114,7 +114,7 @@ All via Tailscale (100.68.33.95):
 
 ## 🗂️ Directory Structure
 
-```
+```md
 /home/ivan/home-server/     # Git repo
 ├── config/                 # NixOS configs
 ├── docker/                 # Services

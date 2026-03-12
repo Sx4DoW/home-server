@@ -2,7 +2,7 @@
 
 ## Network Topology
 
-```
+```md
 Internet
     │
     ├─ archlinux (100.78.206.128)
@@ -21,7 +21,7 @@ All connected via Tailscale VPN (trusted network)
 
 ## Services Architecture
 
-```
+```md
 home-server (NixOS)
 │
 ├─ System Level (NixOS)
@@ -42,12 +42,14 @@ Storage: /srv/jellyfin/
 ## Development Workflow
 
 ### 1. Edit Configuration (archlinux)
+
 ```bash
 cd ~/home-server
 # Edit files in config/, docker/*, scripts/
 ```
 
 ### 2. Commit & Push
+
 ```bash
 git add .
 git commit -m "Description"
@@ -55,6 +57,7 @@ git push
 ```
 
 ### 3. Deploy to Server (home-server)
+
 ```bash
 # SSH to home-server or directly:
 void-sync              # Pulls git changes
@@ -67,7 +70,7 @@ docker-compose up -d
 
 ## File Organization
 
-```
+```md
 /home/ivan/home-server/     # Git repo
 ├── config/                 # NixOS configuration
 │   ├── configuration.nix   # Main config
@@ -95,6 +98,7 @@ docker-compose up -d
 ## Key Commands Reference
 
 ### System Management
+
 ```bash
 void-sync               # Pull latest config from git
 nixos-rebuild          # Rebuild NixOS (runs rebuild.sh)
@@ -103,6 +107,7 @@ nixos-ls-gens         # List all generations
 ```
 
 ### Docker Management
+
 ```bash
 dps                    # List containers (formatted)
 dlog <container>       # Follow container logs
@@ -112,6 +117,7 @@ docker-compose restart # Restart service
 ```
 
 ### Service URLs
+
 ```bash
 # All accessible via Tailscale at 100.68.33.95
 Homepage:  http://100.68.33.95:3000
@@ -139,6 +145,7 @@ Slskd:     http://100.68.33.95:5030
 ## Expansion Planning
 
 ### Adding New Services
+
 1. Create `docker/<service>/docker-compose.yml`
 2. Add README in service directory
 3. Update homepage config
@@ -146,6 +153,7 @@ Slskd:     http://100.68.33.95:5030
 5. Pull & start on home-server
 
 ### Adding External Storage
+
 ```bash
 # Mount drive at /srv/jellyfin
 sudo mount /dev/sdX1 /srv/jellyfin
@@ -153,6 +161,7 @@ sudo mount /dev/sdX1 /srv/jellyfin
 ```
 
 ### Adding Users to Jellyfin
+
 Dashboard → Users → Add User (with passwords)
 
 ## Monitoring
@@ -175,6 +184,7 @@ df -h /srv/jellyfin
 ## Quick Recovery
 
 ### Service Won't Start
+
 ```bash
 cd ~/home-server/docker/<service>
 docker-compose down
@@ -183,12 +193,14 @@ docker logs <service>
 ```
 
 ### Permissions Broken
+
 ```bash
 sudo chown -R 1000:1000 /srv/jellyfin
 sudo chown -R 1000:1000 ~/home-server/docker/<service>/config
 ```
 
 ### System Broken
+
 ```bash
 # Rollback to previous generation
 nixos-ls-gens

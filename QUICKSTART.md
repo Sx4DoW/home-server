@@ -4,27 +4,30 @@ Complete setup for self-hosted Spotify/Netflix replacement.
 
 ## What's Running
 
-| Service | URL | Purpose |
-|---------|-----|---------|
-| Homepage | http://100.68.33.95:3000 | Dashboard |
-| Jellyfin | http://100.68.33.95:8096 | Media streaming (music, movies, TV) |
-| Slskd | http://100.68.33.95:5030 | P2P music downloads |
+| Service  | URL                        | Purpose                             |
+|----------|----------------------------|-------------------------------------|
+| Homepage | <http://100.68.33.95:3000> | Dashboard                           |
+| Jellyfin | <http://100.68.33.95:8096> | Media streaming (music, movies, TV) |
+| Slskd    | <http://100.68.33.95:5030> | P2P music downloads                 |
 
 ## Common Tasks
 
 ### Download Music
-1. Open Slskd: http://100.68.33.95:5030
+
+1. Open Slskd: <http://100.68.33.95:5030>
 2. Search for artist/song
 3. Download FLAC or 320kbps MP3
 4. Rescan Jellyfin music library
 
 ### Watch Movies/TV
+
 1. Add media to `/srv/jellyfin/media/Movies` or `/srv/jellyfin/media/TV Shows`
 2. Follow naming: `Movie Name (Year)/Movie Name (Year).mkv`
 3. Rescan Jellyfin library
 4. Stream on any device
 
 ### Update System
+
 ```bash
 # On home-server
 void-sync        # Pull latest config
@@ -33,7 +36,7 @@ nixos-rebuild    # Rebuild system
 
 ## Storage Layout
 
-```
+```md
 /srv/jellyfin/
 ├── media/        # Movies & TV shows
 │   ├── Movies/
@@ -47,6 +50,7 @@ nixos-rebuild    # Rebuild system
 ## Troubleshooting Quick Reference
 
 ### Jellyfin won't start
+
 ```bash
 cd ~/home-server/docker/jellyfin
 docker-compose down
@@ -55,6 +59,7 @@ docker-compose up -d
 ```
 
 ### Slskd not connecting
+
 ```bash
 cd ~/home-server/docker/slskd
 docker-compose restart
@@ -62,11 +67,13 @@ docker logs slskd | tail -20
 ```
 
 ### Can't access services
+
 - Check Tailscale: `tailscale status`
 - Verify IP: Should be 100.68.33.95
 - Try direct IP in browser instead of hostname
 
 ### Permission errors
+
 ```bash
 sudo chown -R 1000:1000 /srv/jellyfin
 ```
@@ -74,9 +81,10 @@ sudo chown -R 1000:1000 /srv/jellyfin
 ## Mobile Apps
 
 **Jellyfin**:
+
 - Android: "Jellyfin for Android" (Play Store)
 - iOS: "Jellyfin Mobile" (App Store)
-- Login: http://100.68.33.95:8096
+- Login: <http://100.68.33.95:8096>
 
 ## Important Notes
 
