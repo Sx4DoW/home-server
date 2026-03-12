@@ -3,7 +3,8 @@
 {
     networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    # 50300 is slskd port
+    allowedTCPPorts = [ 80 443 50300];
     trustedInterfaces = [ "tailscale0" ];
   };
 }
