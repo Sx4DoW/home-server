@@ -17,7 +17,12 @@
     pciutils
     tmux
     docker-compose
-  ];
+    oci-cli
+    (python3.withPackages (ps: with ps; [ 
+      oci 
+      requests 
+    ]))
+];
 
   environment.shellAliases = {
     # System Operations
