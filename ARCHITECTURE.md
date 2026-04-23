@@ -32,7 +32,8 @@ home-server (NixOS)
 └─ Docker Services
    ├─ Homepage:3000 (Dashboard)
    ├─ Jellyfin:8096 (Media server with HW accel)
-   └─ Slskd:5030 (P2P music downloader)
+   ├─ Slskd:5030 (P2P music downloader)
+   └─ Power Monitor:9150 (Energy and monthly cost tracking)
 
 Storage: /srv/jellyfin/
 ├─ media/ (movies, TV)
@@ -82,6 +83,7 @@ docker-compose up -d
 │   ├── homepage/          # Dashboard
 │   ├── jellyfin/          # Media server
 │   ├── slskd/            # Music downloader
+│   ├── power-monitor/    # Energy and cost tracking
 │   └── deemix/           # (Disabled)
 ├── scripts/              # Helper scripts
 │   ├── rebuild.sh       # nixos-rebuild alias
@@ -123,6 +125,7 @@ docker-compose restart # Restart service
 Homepage:  http://100.68.33.95:3000
 Jellyfin:  http://100.68.33.95:8096
 Slskd:     http://100.68.33.95:5030
+Power:     http://100.68.33.95:9150
 ```
 
 ## Security Model
@@ -173,6 +176,9 @@ htop
 # Container status
 docker ps
 docker stats
+
+# Power usage and cost dashboard
+open http://100.68.33.95:9150
 
 # View all logs
 docker-compose logs -f

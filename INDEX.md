@@ -37,6 +37,10 @@ Complete reference for home-server setup.
   - Service links
   - Container monitoring
 
+- **[Power Monitor](docker/power-monitor/README.md)** - Energy and cost tracking
+  - Live server power estimates
+  - Monthly cost history (SQLite)
+
 ### Disabled Services
 
 - **[Deemix](docker/deemix/README-DISABLED.md)** - Not in use
@@ -103,6 +107,7 @@ All via Tailscale (100.68.33.95):
 - Homepage: <http://100.68.33.95:3000>
 - Jellyfin: <http://100.68.33.95:8096>  
 - Slskd: <http://100.68.33.95:5030>
+- Power Monitor: <http://100.68.33.95:9150>
 
 ## 📱 Mobile Access
 
@@ -120,7 +125,8 @@ All via Tailscale (100.68.33.95):
 ├── docker/                 # Services
 │   ├── homepage/
 │   ├── jellyfin/
-│   └── slskd/
+│   ├── slskd/
+│   └── power-monitor/
 ├── scripts/                # Maintenance
 ├── QUICKSTART.md          # You are here
 ├── ARCHITECTURE.md        # System design

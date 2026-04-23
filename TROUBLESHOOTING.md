@@ -53,6 +53,57 @@ docker-compose up -d
 
 **Solution**: Try different search results, look for users with many files
 
+### Slskd Stops by Itself Around 90% Disk Usage
+
+**Cause**: `slskd-disk-guard` detected low free space and stopped `slskd` to prevent more downloads.
+
+**Solution**:
+
+1. Check guard logs: `docker logs slskd-disk-guard --tail 50`
+2. Free space in `/srv/slskd/downloads` (especially `failed_imports`)
+3. Restart slskd: `docker start slskd`
+4. Optional: tune threshold in `docker/slskd/docker-compose.yml` (`USAGE_THRESHOLD`)
+
+## Power Monitor
+
+### No Data in Dashboard
+
+**Cause**: Collector has not produced samples yet or container just started
+
+**Solution**:
+
+1. Wait 1-2 sampling intervals (default 30s)
+2. Check service logs: `docker logs power-monitor | tail -50`
+3. Confirm API responds: `curl http://127.0.0.1:9150/api/status`
+
+### RAPL Sensors Not Found
+
+**Cause**: Host does not expose `/sys/class/powercap` to the container
+
+**Solution**:
+
+1. Verify on host: `ls /sys/class/powercap`
+2. Ensure compose volume exists: `/sys/class/powercap:/host/powercap:ro`
+3. If unsupported hardware, set fixed estimate mode:
+
+```bash
+cd ~/home-server/docker/power-monitor
+# edit docker-compose.yml
+# POWER_SOURCE=fixed
+# FALLBACK_POWER_W=35
+docker-compose up -d --build
+```
+
+### Wrong Monthly Cost
+
+**Cause**: Electricity tariff mismatch
+
+**Solution**:
+
+1. Update `PRICE_PER_KWH` in `docker/power-monitor/docker-compose.yml`
+2. Restart service: `docker-compose up -d`
+3. Recheck totals in `http://100.68.33.95:9150`
+
 ## General
 
 ### Services Not Accessible

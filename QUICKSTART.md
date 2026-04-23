@@ -4,11 +4,12 @@ Complete setup for self-hosted Spotify/Netflix replacement.
 
 ## What's Running
 
-| Service  | URL                        | Purpose                             |
-|----------|----------------------------|-------------------------------------|
-| Homepage | <http://100.68.33.95:3000> | Dashboard                           |
-| Jellyfin | <http://100.68.33.95:8096> | Media streaming (music, movies, TV) |
-| Slskd    | <http://100.68.33.95:5030> | P2P music downloads                 |
+| Service       | URL                        | Purpose                               |
+|---------------|----------------------------|---------------------------------------|
+| Homepage      | <http://100.68.33.95:3000> | Dashboard                             |
+| Jellyfin      | <http://100.68.33.95:8096> | Media streaming (music, movies, TV)   |
+| Slskd         | <http://100.68.33.95:5030> | P2P music downloads                   |
+| Power Monitor | <http://100.68.33.95:9150> | Power usage and monthly cost tracking |
 
 ## Common Tasks
 
@@ -33,6 +34,12 @@ Complete setup for self-hosted Spotify/Netflix replacement.
 void-sync        # Pull latest config
 nixos-rebuild    # Rebuild system
 ```
+
+### Check Electricity Cost
+
+1. Open Power Monitor: <http://100.68.33.95:9150>
+2. Check current month kWh and estimated cost
+3. Review previous months in the history table
 
 ## Storage Layout
 
