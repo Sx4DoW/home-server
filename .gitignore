@@ -2,7 +2,9 @@ result
 *.swp
 .direnv/
 .gitmodules
-
-# Environment variables
 .env
 **/.env
+.env.local
+**/.env.local
+**/__pycache__/
+**/*.pyc
