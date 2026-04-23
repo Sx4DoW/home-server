@@ -94,6 +94,13 @@ dlog <name>           # View logs
 cd ~/home-server/docker/<service>
 docker-compose restart # Restart service
 
+# Power monitor pricing
+cd ~/home-server/docker/power-monitor
+docker-compose up -d --build
+docker ps --filter name=power-price-updater
+docker logs --tail 50 power-price-updater
+docker restart power-price-updater
+
 # System info
 tailscale status      # Network status
 df -h                 # Disk usage

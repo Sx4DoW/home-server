@@ -101,8 +101,10 @@ docker-compose up -d --build
 **Solution**:
 
 1. Update `PRICE_PER_KWH` in `docker/power-monitor/docker-compose.yml`
-2. Restart service: `docker-compose up -d`
-3. Recheck totals in `http://100.68.33.95:9150`
+2. Verify updater container is running: `cd ~/home-server/docker/power-monitor && docker-compose ps power-price-updater`
+3. Check updater logs: `docker logs power-price-updater --tail 50`
+4. Force an immediate refresh (optional): `docker restart power-price-updater`
+5. Recheck totals in `http://100.68.33.95:9150`
 
 ## General
 
