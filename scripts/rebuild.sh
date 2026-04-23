@@ -9,8 +9,9 @@ cd "$CONFIG_DIR" && git pull --recurse-submodules && git submodule update --remo
 echo "--- Updating Nix channels ---"
 sudo nix-channel --update
 
-echo "--- Running NixOS Rebuild (with package upgrades) ---"
-sudo nixos-rebuild switch --upgrade -I nixos-config="$CONFIG_DIR/config/configuration.nix"
+echo "--- Running NixOS Rebuild ---"
+# Channels are already updated above; avoid running a second upgrade pass.
+sudo nixos-rebuild switch -I nixos-config="$CONFIG_DIR/config/configuration.nix"
 
 if command -v docker >/dev/null 2>&1; then
 	echo "--- Updating Docker Compose containers ---"
