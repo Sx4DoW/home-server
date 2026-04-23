@@ -83,7 +83,7 @@ docker-compose up -d
 **Solution**:
 
 1. Verify on host: `ls /sys/class/powercap`
-2. Ensure compose volume exists: `/sys/class/powercap:/host/powercap:ro`
+2. Ensure compose volume exists: `/sys/devices/virtual/powercap:/host/powercap:ro`
 3. If unsupported hardware, set fixed estimate mode:
 
 ```bash
