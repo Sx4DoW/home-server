@@ -3,14 +3,14 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./docker.nix
       ./environment.nix
+      ./fastfetch.nix
+      ./firewall.nix
+      ./hardware-configuration.nix
       ./ssh.nix
       ./tailscale.nix
-      ./fastfetch.nix
-      ./docker.nix
       ./tmux.nix
-      ./firewall.nix
     ];
 
   # ----------------------------------------------------
