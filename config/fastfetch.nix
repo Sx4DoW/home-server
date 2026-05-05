@@ -1,5 +1,5 @@
 { pkgs, ... }:
-
+# Custom fastfetch script. Feel free to edit
 {
   environment.systemPackages = [ pkgs.fastfetch ];
 

@@ -1,4 +1,6 @@
 { ... }:
+# tmux is has been installed to run background tasks 
+# even when disconnected from the ssh interface
 {
     programs.tmux = {
         enable = true;

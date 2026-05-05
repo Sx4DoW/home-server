@@ -7,16 +7,21 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # all fundamental system packages
     nim
-    neovim
     wget
-    ncurses
-    kitty.terminfo
     git
-    htop
-    pciutils
     tmux
     docker-compose
+    # utilities
+    htop
+    pciutils
+    # terminal
+    ncurses
+    kitty.terminfo
+    # text editor
+    neovim
+    # oci-cli will be used to fetch for an available oracle server
     oci-cli
     (python3.withPackages (ps: with ps; [ 
       oci 

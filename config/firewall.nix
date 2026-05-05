@@ -1,5 +1,7 @@
 { ... }:
-
+# Firewall rules.
+# All incoming connections are dropped
+# if not on allowed ports or trusted interface (VPN)
 {
     networking.firewall = {
     enable = true;

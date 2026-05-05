@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-
+# Tailscale is the VPN of choice to remotely interact with the server 
 {
   # Enable the Tailscale daemon
   services.tailscale.enable = true;
@@ -8,6 +8,5 @@
   networking.firewall.allowedUDPPorts = [ config.services.tailscale.port ];
 
   # This allows Tailscale's "MagicDNS" and exit nodes to work correctly
-  # by relaxing the reverse path filtering.
   networking.firewall.checkReversePath = "loose";
 }
