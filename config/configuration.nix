@@ -39,7 +39,6 @@
 
   # Networking & Remote Management
   networking.hostName = "home-server";
-  services.tailscale.enable = true;
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
